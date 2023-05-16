@@ -1,0 +1,10 @@
+p {
+  font-family: 'Vollkorn';
+  font-size: 40px;
+}
+
+#header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
