@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
+import { Library } from './classes';
 
 @Injectable()
 export class LibraryService {
@@ -16,13 +17,13 @@ export class LibraryService {
     });
   }
   //creare la classe book da passare al metodo
-  addBook(book: JSON): Observable<AjaxResponse<any>> {
+  addBook(library: Library): Observable<AjaxResponse<any>> {
     return ajax({
       //metodo ajax definito all'interno di angular
       method: 'POST',
       url: this.URL + "get?key=" + this.apiKey,
       crossDomain: true,
-      body: JSON.stringify(book)
+      body: JSON.stringify(library)
     });
   }
 
