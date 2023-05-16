@@ -11,7 +11,7 @@ import {ResearchComponent} from './research/research.component'
   standalone: true
 })
 export class RootComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {
