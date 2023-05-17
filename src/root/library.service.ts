@@ -21,7 +21,7 @@ export class LibraryService {
   setLibrary(library: Library): Observable<AjaxResponse<any>> {
     return ajax({
       method: 'POST',
-      url: this.URL + 'get?key=' + this.apiKey,
+      url: this.URL + 'set?key=' + this.apiKey,
       crossDomain: true,
       body: JSON.stringify(library),
     });

@@ -1,0 +1,13 @@
+<div class="container">
+  <div id="add-book">
+    <a (click)="showForm()">{{ addbooktext }}</a>
+  </div>
+  <div *ngIf="bookForm == true">
+    <form>
+      <label for="fname">Titolo:</label><br />
+      <input type="text" id="nb_titolo" /><br />
+      <label for="lname">Autore:</label><br />
+      <input type="text" id="nb_autore" />
+    </form>
+  </div>
+</div>

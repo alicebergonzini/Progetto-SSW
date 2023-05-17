@@ -1,0 +1,14 @@
+a {
+  font-family: 'Inter';
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#add-book {
+  text-align: right;
+  padding: 9px;
+  padding-right: 2px;
+}
