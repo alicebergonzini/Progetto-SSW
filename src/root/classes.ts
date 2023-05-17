@@ -2,6 +2,7 @@ import { Interfaces } from './interfaces';
 
 //possibilmente definire un tipo di stringa che matchi una data espressione regolare
 
+//classe per una singola unità della Libreria, un libro
 export class Book {
   titolo: string;
   autore: string;
@@ -26,13 +27,18 @@ export class Book {
   }
 }
 
+//classe per l'insieme di libri, quindi la libreria
 export class Library {
   books: Array<Book>;
   constructor(books: Array<Book>) {
     this.books = books;
   }
+  addBook(book: Book){
+    this.books.push(book);
+  }
 }
 
+//classe per l'utente 
 export class User {
   nome: string;
   cognome: string;
