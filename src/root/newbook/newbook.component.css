@@ -1,4 +1,8 @@
-a {
+#newbookform{
+  margin-bottom: 30px;
+}
+
+.container {
   font-family: 'Inter';
 }
 
@@ -46,5 +50,18 @@ form .field {
   box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
 }
 
+.button1 {
+  float: right;
+  background-color: #c8d5b9;
+  padding: 8px 18px;
+  border-style: none;
+  border-radius: 6px;
+  transition: background-color 0.15s ease-in-out;
+}
 
+
+.button1:hover {
+  cursor: pointer;
+  background-color: #8fc0a9;
+}
 
