@@ -1,6 +1,6 @@
 
 <div id="root">
-<app-header></app-header>
-<app-newbook></app-newbook>
-<app-research></app-research>
-</div>
+  <app-header></app-header>
+  <app-newbook (newBookEvent)="newbook($event)"></app-newbook>
+  <app-research></app-research>
+  </div>

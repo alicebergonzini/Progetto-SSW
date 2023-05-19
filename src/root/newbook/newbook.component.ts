@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { Book } from '../classes';
 
 @Component({
   selector: 'app-newbook',
   templateUrl: './newbook.component.html',
   styleUrls: ['./newbook.component.css'],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   standalone: true,
 })
 export class NewbookComponent implements OnInit {
+  @Output() newBookEvent = new EventEmitter<Book>(); 
   bookForm: boolean = false;
   addbooktext: string = '+ Aggiungi un libro';
   constructor() {}
@@ -24,9 +26,14 @@ export class NewbookComponent implements OnInit {
     }
   }
   onSubmit()  {
-    var author: HTMLInputElement = document.getElementById('nb_author') as HTMLInputElement;
-    var autore: string = author.value;
-    console.log(autore);
+    var title: HTMLInputElement = document.getElementById('nbtitolo') as HTMLInputElement;
+    var author: HTMLInputElement = document.getElementById('nbautore') as HTMLInputElement;
+    var position: HTMLInputElement = document.getElementById('nbposizione') as HTMLInputElement;
+    var newBook: Book = new Book(title.value, author.value, position.value, undefined);
+    this.newBookEvent.emit(newBook);
+    title.value = "";
+    author.value = "";
+    position.value = "";
   }
    
 }
