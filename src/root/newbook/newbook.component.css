@@ -27,6 +27,10 @@ form .field {
   margin-bottom: 15px;
 }
 
+#nbposizione {
+  margin-bottom: 0px;
+}
+
 .field {
   padding: 6px 20px;
   padding-right: 300px;
@@ -68,4 +72,15 @@ form .field {
   background-color: #8ea870;
 
 }
+
+#errore {
+  font-size: 11px;
+  margin-top: 0px;
+  height: 12px;
+  width: 100%;
+  text-align: center;
+  color: red;
+}
+
+
 
