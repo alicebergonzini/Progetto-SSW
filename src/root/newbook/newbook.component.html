@@ -3,7 +3,7 @@
     <a (click)="showForm()">{{ addbooktext }}</a>
   </div>
   <div *ngIf="bookForm == true" id="newbookform">
-    <form id="nb_form">
+    <form id="nb_form" action="#" (ngSubmit)="onSubmit()">
       <input class="field" type="text" id="nb_titolo" placeholder="Titolo" /><br />
       <input class="field" type="text" id="nb_autore" placeholder="Autore" /> <br />
       <input class="field" type="text" id="nb_posizione" placeholder="Posizione" /> <br />
