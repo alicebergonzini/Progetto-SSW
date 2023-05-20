@@ -15,6 +15,8 @@ import {Library, Book} from './classes';
 })
 export class RootComponent implements OnInit {
   library: Library = new Library([new Book("Il Fu Mattia Pascal", "Luigi Pirandello", "P222", undefined), new Book("Harry Potter e la Pietra Filosofale", "J.K. Rowling", "U820", undefined) ]);
+  booksfound: Array<Book> = [];
+
   constructor() { }
 
   ngOnInit() {
@@ -23,6 +25,18 @@ export class RootComponent implements OnInit {
   newbook(newbook: Book){
     this.library.books.push(newbook);
     console.log(this.library.books)
+  }
+  searchbook(searchedstring: string){
+    this.booksfound = [];
+    if(searchedstring!=""){
+      this.library.books.forEach((book)=>{
+        var combined:string = book.titolo.toLowerCase() + book.autore.toLowerCase();
+        if(combined.includes(searchedstring.toLowerCase())){
+          this.booksfound.push(book);
+        }
+      })
+      console.log(this.booksfound);
+    }
   }
 
 }

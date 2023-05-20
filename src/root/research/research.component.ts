@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {Book} from '../classes'
 import { CommonModule } from '@angular/common';
 import { AjaxResponse } from 'rxjs/ajax';
 
@@ -9,7 +10,13 @@ import { AjaxResponse } from 'rxjs/ajax';
   standalone: true,
 })
 export class ResearchComponent implements OnInit {
+  @Output() searchBookEvent = new EventEmitter<string>(); 
   constructor() {}
 
   ngOnInit() {}
+  cercaSubmit() {
+    var cerca: HTMLInputElement = document.getElementById('cerca') as HTMLInputElement;
+    var searchstring: string = cerca.value;
+    this.searchBookEvent.emit(searchstring);
+  }
 }
