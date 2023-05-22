@@ -3,4 +3,9 @@
   <app-header></app-header>
   <app-newbook (newBookEvent)="newbook($event)"></app-newbook>
   <app-research (searchBookEvent)="searchbook($event)"></app-research>
+  <div id="results">
+    <p> {{bf_message}} </p>
+    <app-result [book_result]="book" *ngFor="let book of booksfound;"></app-result>
   </div>
+</div>
+

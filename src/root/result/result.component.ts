@@ -8,7 +8,7 @@ import {Book} from '../classes'
   standalone: true
 })
 export class ResultComponent implements OnInit {
-  //@Input() book_result: Book;
+  @Input() book_result: any;
   constructor() { }
 
   ngOnInit() {

@@ -1,0 +1,36 @@
+.result {
+  border-style: solid;
+  border-color: #c7c7c7;
+  border-width: 0.1px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.result_title {
+  width: 50%;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.result_author {
+  width: 50%;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.result_position {
+  width: 50%;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+.result_position a {
+  color: #8ea870;
+  font-weight: bold;
+}
+
+.elements{
+  margin-left: 10px;
+}
+
