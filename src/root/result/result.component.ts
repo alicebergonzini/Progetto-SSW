@@ -8,10 +8,15 @@ import {Book} from '../classes'
   standalone: true
 })
 export class ResultComponent implements OnInit {
-  @Input() book_result: any;
+  //inizializzo perché mi obbliga a farlo; è corretto? 
+  @Input() book_result: Book = new Book("", "", "", undefined);
+  status: string = ""; 
   constructor() { }
 
   ngOnInit() {
+    this.status =  this.book_result.utenteNol === undefined ? "Disponibile" : "Noleggiato";
   }
+
+  
 
 }

@@ -1,26 +1,24 @@
 .result {
   border-style: solid;
-  border-color: #c7c7c7;
+  border-color: #d6d6d6;
   border-width: 0.1px;
   border-radius: 6px;
   margin-bottom: 20px;
+  height: 110px;
 }
 
 .result_title {
-  width: 50%;
   font-weight: bold;
   font-size: 16px;
   margin-top: 15px;
 }
 
 .result_author {
-  width: 50%;
   font-size: 14px;
   margin-top: 5px;
 }
 
 .result_position {
-  width: 50%;
   font-size: 14px;
   margin-top: 16px;
 }
@@ -31,6 +29,23 @@
 }
 
 .elements{
-  margin-left: 10px;
+  margin-left: 23px;
+  float: left;
+  display: inline;
+}
+
+.data {
+  width: 55%;
+}
+
+.action {
+  width: 32%;
+  text-align: right;
+}
+
+.status {
+  margin-top: 15px;
+  position: relative;
+  font-size: 13px;
 }
 
