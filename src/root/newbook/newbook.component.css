@@ -18,12 +18,11 @@ a:hover {
 }
 
 
-
-form {
+.form {
   padding-bottom: 40px;
 }
 
-form .field {
+.form .field {
   margin-bottom: 15px;
 }
 
