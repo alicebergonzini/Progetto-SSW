@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core'; 
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core'; 
 import {Book} from '../classes';
 
 
@@ -13,6 +13,7 @@ import {Book} from '../classes';
 export class ResultComponent implements OnInit {
   //inizializzo perché mi obbliga a farlo; è corretto? 
   @Input() book_result: Book = new Book("", "", "", undefined);
+  @Output() deleteEvent = new EventEmitter<Book>(); 
   status: string = ""; 
   isDisponibile: boolean = true;
   constructor() { }
@@ -21,7 +22,8 @@ export class ResultComponent implements OnInit {
     this.status =  this.book_result.utenteNol === undefined ? "Disponibile" : "Noleggiato";
     this.isDisponibile =  this.book_result.utenteNol != undefined ? false: true;
   }
-
+  onDelete(){
+    this.deleteEvent.emit(this.book_result);
+  }
   
-
 }

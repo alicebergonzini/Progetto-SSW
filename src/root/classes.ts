@@ -36,6 +36,10 @@ export class Library {
   addBook(book: Book){
     this.books.push(book);
   }
+  deleteBook(book: Book){
+    var indice:number = this.books.indexOf(book);
+    this.books.splice(indice, 1);
+  }
 }
 
 //classe per l'utente 

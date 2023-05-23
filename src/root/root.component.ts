@@ -25,8 +25,15 @@ export class RootComponent implements OnInit {
   }
 
   newbook(newbook: Book){
-    this.library.books.push(newbook);
+    this.library.addBook(newbook);
     console.log(this.library.books)
+  }
+  removebook(book: Book){
+    if(confirm("Are you sure to delete " + book.titolo)) {
+     this.library.deleteBook(book);
+    }
+    var div2del: HTMLDivElement = document.getElementById(book.posizione) as HTMLDivElement;
+    div2del.remove();
   }
   searchbook(searchedstring: string){
     this.booksfound = [];

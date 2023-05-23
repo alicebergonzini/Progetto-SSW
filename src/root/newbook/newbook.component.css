@@ -56,20 +56,17 @@ form .field {
 
 .button1 {
   float: right;
-  background-color: #c8d5b9;
+  background-color: #afcc8d;
   padding: 8px 18px;
   border-style: none;
   border-radius: 6px;
   transition: background-color 0.15s ease-in-out;
   font-weight: 600;
-
-
 }
-
 
 .button1:hover {
   cursor: pointer;
-  background-color: #8ea870;
+  background-color: #95be65;
 
 }
 
