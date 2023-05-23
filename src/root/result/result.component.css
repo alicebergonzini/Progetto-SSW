@@ -49,3 +49,39 @@
   font-size: 13px;
 }
 
+.btn_group {
+  margin-top: 10px;
+  text-align: center;
+  padding: 3px 6px;
+  margin-left: 10px;
+  border-style:none;
+  border-radius: 3px;
+}
+
+.delete {
+  background-color: #ec7c6e;
+}
+
+.delete:hover {
+  background-color: #e95e4b;
+}
+
+.return {
+  background-color: #8dd5ff;
+}
+
+.return:hover {
+  background-color: #49bcff;
+}
+
+.borrow {
+  background-color: #afcc8d;
+}
+
+.borrow:hover {
+  background-color: #95be65;
+}
+
+.material-symbols-outlined {
+  font-size: 20px;
+}

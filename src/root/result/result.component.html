@@ -1,13 +1,30 @@
 <div class="result">
   <div class="elements data">
-    <div class="result_title">{{book_result.titolo}}</div>
-    <div class="result_author">{{book_result.autore}}</div>
-    <div class="result_position">Posizione: <a>{{book_result.posizione}}</a></div>
-  </div>
-  <div class="elements action">
-    <div class="status">
-      Status: {{status}}
+    <div class="result_title">{{ book_result.titolo }}</div>
+    <div class="result_author">{{ book_result.autore }}</div>
+    <div class="result_position">
+      Posizione: <a>{{ book_result.posizione }}</a>
     </div>
   </div>
-  <br>
+  <div class="elements action">
+    <div class="status">Status: {{ status }}</div>
+    <br />
+    <div class="buttons">
+      <button *ngIf="isDisponibile" class="btn_group borrow" title="Noleggia">
+        <span class="material-symbols-outlined"> approval_delegation </span>
+      </button>
+      <button
+        *ngIf="!isDisponibile"
+        class="btn_group return"
+        title="Restituisci"
+      >
+        <span class="material-symbols-outlined"> drive_file_move </span>
+      </button>
+
+      <button class="btn_group delete" title="Elimina">
+        <span class="material-symbols-outlined"> delete </span>
+      </button>
+    </div>
+  </div>
+  <br />
 </div>
