@@ -32,11 +32,12 @@ export class RootComponent implements OnInit {
   removebook(book: Book){
     if(confirm("Are you sure to delete " + book.titolo)) {
      this.library.deleteBook(book);
+     var div2del: HTMLDivElement = document.getElementById(book.posizione) as HTMLDivElement;
+     this.bf_count += -1;
+     this.msgFound(this.bf_count);
+     div2del.remove();
     }
-    var div2del: HTMLDivElement = document.getElementById(book.posizione) as HTMLDivElement;
-    this.bf_count += -1;
-    this.msgFound(this.bf_count);
-    div2del.remove();
+   
   }
   searchbook(searchedstring: string){
     this.booksfound = [];

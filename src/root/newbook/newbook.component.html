@@ -4,9 +4,9 @@
   </div>
   <div *ngIf="bookForm == true" id="newbookform">
     <div id="nb_form" class="form">
-      <input class="field" type="text" id="nbtitolo" placeholder="Titolo" /><br />
-      <input class="field" id="nbautore" type="text"  placeholder="Autore" /> <br />
-      <input class="field" type="text" id="nbposizione" placeholder="Posizione" /> <br />
+      <input class="field" type="text" id="nbtitolo" placeholder="Titolo" (keyup.enter)="onSubmit()"/><br />
+      <input class="field" id="nbautore" type="text"  placeholder="Autore" (keyup.enter)="onSubmit()"/> <br />
+      <input class="field" type="text" id="nbposizione" placeholder="Posizione" (keyup.enter)="onSubmit()"/> <br />
       <div id="errore">
         <p>{{errorMsg}}</p> 
       </div>
