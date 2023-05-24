@@ -1,5 +1,5 @@
-import { Component,Input, OnInit } from '@angular/core';
-import {Book} from '../classes'
+import { Component,Input, OnInit, EventEmitter, Output } from '@angular/core';
+import {Book, User} from '../classes'
 
 @Component({
   selector: 'app-noleggio',
@@ -9,6 +9,7 @@ import {Book} from '../classes'
 })
 export class NoleggioComponent implements OnInit {
   @Input() book: Book = new Book("", "", "", undefined);
+  @Output() noleggiaEvent = new EventEmitter<User>(); 
   inputnome: string = this.book.posizione + "Nome"
   inputcognome: string = this.book.posizione + "Cognome"
   constructor() { }
@@ -18,6 +19,6 @@ export class NoleggioComponent implements OnInit {
   noleggia(){
     var name: HTMLInputElement = document.getElementById(this.inputnome) as HTMLInputElement;
     var surname: HTMLInputElement = document.getElementById(this.inputcognome) as HTMLInputElement;
-    console.log(name.value+surname.value);
+    this.noleggiaEvent.emit(new User(name.value, surname.value))
   }
 }

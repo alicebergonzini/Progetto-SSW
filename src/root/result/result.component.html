@@ -25,7 +25,7 @@
           <span class="material-symbols-outlined"> drive_file_move </span>
         </button>
 
-        <button class="btn_group delete" title="Elimina" (click)="onDelete()">
+        <button class="btn_group delete" *ngIf="isDisponibile" title="Elimina" (click)="onDelete()">
           <span class="material-symbols-outlined"> delete </span>
         </button>
       </div>
@@ -33,6 +33,6 @@
   </div>
   <br />
   <div class="contieni-noleggio" *ngIf="noleggiando">
-    <app-noleggio [book] = "book_result"></app-noleggio>
+    <app-noleggio [book] = "book_result" (noleggiaEvent)="makeNoleggio($event)"></app-noleggio>
   </div> 
 </div>

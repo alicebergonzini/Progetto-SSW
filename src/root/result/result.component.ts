@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core'; 
-import {Book} from '../classes';
+import {Book, User} from '../classes';
 import { NoleggioComponent } from '../noleggio/noleggio.component';
 
 
@@ -37,5 +37,10 @@ export class ResultComponent implements OnInit {
     this.noleggiando = false;
     var div_result: HTMLDivElement = document.getElementById(this.id) as HTMLDivElement; 
     div_result.style.height = "110px";
+  }
+  makeNoleggio(user: User){
+    this.book_result.loan(user);
+    this.isDisponibile = false;
+    this.chiudiNoleggia();
   }
 }

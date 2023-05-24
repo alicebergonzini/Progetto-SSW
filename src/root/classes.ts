@@ -46,10 +46,8 @@ export class Library {
 export class User {
   nome: string;
   cognome: string;
-  userid: number;
-  constructor(nome: string, cognome: string, userid: number) {
+  constructor(nome: string, cognome: string) {
     this.nome = nome;
     this.cognome = cognome;
-    this.userid = userid;
   }
 }
