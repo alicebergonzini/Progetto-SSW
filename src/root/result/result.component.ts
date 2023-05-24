@@ -19,11 +19,11 @@ export class ResultComponent implements OnInit {
   status: string = ""; 
   isDisponibile: boolean = true;
   noleggiando: boolean = false;
+  
   constructor() { }
 
   ngOnInit() {
     this.checkStatus();
-    
   }
   checkStatus(){
     this.status =  this.book_result.utenteNol === undefined ? "Disponibile" : "Noleggiato";
@@ -46,5 +46,11 @@ export class ResultComponent implements OnInit {
     this.book_result.loan(user);
     this.chiudiNoleggia();
     this.checkStatus();
+  }
+  returnBook(){
+    if(confirm("Sicuro di voler restituire " + this.book_result.titolo + "?")){
+      this.book_result.ret();
+      this.checkStatus();
+    }
   }
 }

@@ -17,11 +17,7 @@
         <button *ngIf="noleggiando"  class="btn_group borrow" title="Chiudi" (click)="chiudiNoleggia()"> 
           <span class="material-symbols-outlined"> close </span>
         </button>
-        <button
-          *ngIf="!isDisponibile"
-          class="btn_group return"
-          title="Restituisci"
-        >
+        <button *ngIf="!isDisponibile" class="btn_group return" title="Restituisci" (click)="returnBook()">
           <span class="material-symbols-outlined"> drive_file_move </span>
         </button>
 
