@@ -11,8 +11,11 @@
       <div class="status">Status: {{ status }}</div>
       <br />
       <div class="buttons">
-        <button *ngIf="isDisponibile" class="btn_group borrow" title="Noleggia" (click)="openNoleggia()"> 
+        <button *ngIf="isDisponibile && !noleggiando"  class="btn_group borrow" title="Noleggia" (click)="openNoleggia()"> 
           <span class="material-symbols-outlined"> approval_delegation </span>
+        </button>
+        <button *ngIf="noleggiando"  class="btn_group borrow" title="Chiudi" (click)="chiudiNoleggia()"> 
+          <span class="material-symbols-outlined"> close </span>
         </button>
         <button
           *ngIf="!isDisponibile"
@@ -30,6 +33,6 @@
   </div>
   <br />
   <div class="contieni-noleggio" *ngIf="noleggiando">
-    <app-noleggio></app-noleggio>
-  </div>
+    <app-noleggio [book] = "book_result"></app-noleggio>
+  </div> 
 </div>

@@ -31,6 +31,11 @@ export class ResultComponent implements OnInit {
   openNoleggia(){
     this.noleggiando = true;
     var div_result: HTMLDivElement = document.getElementById(this.id) as HTMLDivElement; 
-    div_result.style.height = "130px";
+    div_result.style.height = "210px";
+  }
+  chiudiNoleggia(){
+    this.noleggiando = false;
+    var div_result: HTMLDivElement = document.getElementById(this.id) as HTMLDivElement; 
+    div_result.style.height = "110px";
   }
 }

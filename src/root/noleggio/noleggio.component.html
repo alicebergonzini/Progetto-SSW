@@ -1,7 +1,16 @@
+<hr>
 <div class="noleggio">
+<br>
   <a>
   Chi vuole noleggiare questo libro?
   </a>
-  <input type="text">
-  <input type="text">
+  <br><br>
+  <div class="inputs">
+    <label >Nome: </label>
+    <input [id]="inputnome" type="text">
+    <label>Cognome: </label>
+    <input [id]="inputcognome" type="text">
+    <button (click)="noleggia()">Invia</button>
+  </div>
+ 
 </div>
