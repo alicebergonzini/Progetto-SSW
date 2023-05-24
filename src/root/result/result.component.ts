@@ -22,6 +22,10 @@ export class ResultComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.checkStatus();
+    
+  }
+  checkStatus(){
     this.status =  this.book_result.utenteNol === undefined ? "Disponibile" : "Noleggiato";
     this.isDisponibile =  this.book_result.utenteNol != undefined ? false: true;
   }
@@ -40,7 +44,7 @@ export class ResultComponent implements OnInit {
   }
   makeNoleggio(user: User){
     this.book_result.loan(user);
-    this.isDisponibile = false;
     this.chiudiNoleggia();
+    this.checkStatus();
   }
 }
