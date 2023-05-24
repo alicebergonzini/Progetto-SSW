@@ -50,6 +50,8 @@ export class RootComponent implements OnInit {
       })
       this.bf_count = this.booksfound.length;
       this.msgFound(this.bf_count);
+    } else {
+      this.bf_message = "";
     }
   }
   msgFound(count:number){

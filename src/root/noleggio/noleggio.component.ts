@@ -19,6 +19,8 @@ export class NoleggioComponent implements OnInit {
   noleggia(){
     var name: HTMLInputElement = document.getElementById(this.inputnome) as HTMLInputElement;
     var surname: HTMLInputElement = document.getElementById(this.inputcognome) as HTMLInputElement;
-    this.noleggiaEvent.emit(new User(name.value, surname.value))
+    if(name.value != "" && surname.value != ""){
+      this.noleggiaEvent.emit(new User(name.value, surname.value));
+    }
   }
 }
