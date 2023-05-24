@@ -85,3 +85,7 @@
 .material-symbols-outlined {
   font-size: 20px;
 }
+
+.sections {
+  display: flex;
+}
