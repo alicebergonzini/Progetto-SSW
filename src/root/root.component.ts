@@ -27,13 +27,9 @@ export class RootComponent implements OnInit {
   ngOnInit() {
   }
 
-  update(newLibrary: Library){
-    this.library = newLibrary;
-  }
-
   newbook(newbook: Book){
     //!! Attenzione, set va richiamata nella next della subscribe della get!!!!
-    this.ls.getSub();
+    this.ls.addbook(newbook);
   }
   
   removebook(book: Book){
