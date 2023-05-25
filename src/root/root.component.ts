@@ -32,6 +32,7 @@ export class RootComponent implements OnInit {
   }
 
   newbook(newbook: Book){
+    //!! Attenzione, set va richiamata nella next della subscribe della get!!!!
     this.ls.getSub();
   }
   
