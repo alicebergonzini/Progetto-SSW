@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
-import { Library } from './classes';
+import { Library, Book } from './classes';
 
 @Injectable()
 export class LibraryService {
@@ -17,13 +17,30 @@ export class LibraryService {
       crossDomain: true,
     });
   }
-  //metodo che immette il dato nel server
-  setLibrary(library: Library): Observable<AjaxResponse<any>> {
+  //metodo che chiama una callback sul dato e lo immette nel server
+  setLibrary(library: Library, callback: Function): Observable<AjaxResponse<any>> {
+    var updated: Library = callback(library);
     return ajax({
       method: 'POST',
       url: this.URL + 'set?key=' + this.apiKey,
       crossDomain: true,
-      body: JSON.stringify(library),
+      body: JSON.stringify(updated),
     });
+  }
+  //metodo che fa la subscribe di get e chiama una callback sul dato ottenuto
+  getSub(callback: Function){
+  this.getLibrary().subscribe({
+    next: (x: AjaxResponse<any>) =>
+      (callback(JSON.parse(x.response))),
+    error: (err) =>
+      console.error('La richiesta ha dato un errore: ' + JSON.stringify(err)),
+    });
+  }
+//metodo che fa la subscribe di set 
+setSub(library: Library, callback: Function){
+  this.setLibrary(library, callback).subscribe({
+    next: (x: AjaxResponse<any>) => {},
+    error: (err) => console.error('Errore: ' + JSON.stringify(err)),
+  });
   }
 }
