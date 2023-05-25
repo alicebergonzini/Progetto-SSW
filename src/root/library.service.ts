@@ -5,7 +5,7 @@ import { Library, Book } from './classes';
 
 @Injectable()
 export class LibraryService {
-  apiKey: string = '6590f59c';
+  apiKey: string = '5e5aa10f';
   URL: string =
     'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint/';
   constructor() {}
@@ -18,13 +18,12 @@ export class LibraryService {
     });
   }
   //metodo che chiama una callback sul dato e lo immette nel server
-  setLibrary(library: Library, callback: Function): Observable<AjaxResponse<any>> {
-    var updated: Library = callback(library);
+  setLibrary(library: Library): Observable<AjaxResponse<any>> {
     return ajax({
       method: 'POST',
       url: this.URL + 'set?key=' + this.apiKey,
       crossDomain: true,
-      body: JSON.stringify(updated),
+      body: JSON.stringify(library),
     });
   }
   //metodo che fa la subscribe di get e chiama una callback sul dato ottenuto
@@ -37,10 +36,11 @@ export class LibraryService {
     });
   }
 //metodo che fa la subscribe di set 
-setSub(library: Library, callback: Function){
-  this.setLibrary(library, callback).subscribe({
+setSub(library: Library){
+  this.setLibrary(library).subscribe({
     next: (x: AjaxResponse<any>) => {},
     error: (err) => console.error('Errore: ' + JSON.stringify(err)),
-  });
+    });
   }
+  
 }

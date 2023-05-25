@@ -17,7 +17,7 @@ import { LibraryService } from './library.service';
   providers: [LibraryService],
 })
 export class RootComponent implements OnInit {
-  library: Library = new Library([new Book("Il Fu Mattia Pascal", "Luigi Pirandello", "P222", undefined), new Book("Harry Potter e la Pietra Filosofale", "J.K. Rowling", "U820", undefined), new Book("Harry Potter e il Calice di Fuoco", "J.K. Rowling", "N712", undefined), new Book("Lolita", "Vladimir Nabakov", "B288", undefined), new Book("Orgoglio e Pregiudizio", "Jane Austen", "D749", new User("Pippo", "Baudo")), new Book("I Promessi Sposi", "Alessandro Manzoni", "L332", undefined) ]);
+  library: Library = new Library([]);
   booksfound: Array<Book> = [];
   bf_count: number = 0;
   bf_message: string = "";
@@ -26,16 +26,13 @@ export class RootComponent implements OnInit {
 
   ngOnInit() {
   }
-  pushBook(library:Library, book: Book){
-    library.addBook(book);
-  }
 
   update(newLibrary: Library){
     this.library = newLibrary;
   }
 
   newbook(newbook: Book){
-    this.ls.getSub(this.update);
+    this.ls.getSub();
   }
   
   removebook(book: Book){
