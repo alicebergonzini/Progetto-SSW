@@ -5,6 +5,7 @@ import {ResearchComponent} from './research/research.component'
 import { NewbookComponent } from './newbook/newbook.component';
 import {Library, Book, User} from './classes';
 import { ResultComponent } from './result/result.component';
+import { LibraryService } from './library.service';
 
 
 @Component({
@@ -12,7 +13,8 @@ import { ResultComponent } from './result/result.component';
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.css'],
   imports: [CommonModule, HeaderComponent, ResearchComponent, NewbookComponent, ResultComponent],
-  standalone: true
+  standalone: true,
+  providers: [LibraryService],
 })
 export class RootComponent implements OnInit {
   library: Library = new Library([new Book("Il Fu Mattia Pascal", "Luigi Pirandello", "P222", undefined), new Book("Harry Potter e la Pietra Filosofale", "J.K. Rowling", "U820", undefined), new Book("Harry Potter e il Calice di Fuoco", "J.K. Rowling", "N712", undefined), new Book("Lolita", "Vladimir Nabakov", "B288", undefined), new Book("Orgoglio e Pregiudizio", "Jane Austen", "D749", new User("Pippo", "Baudo")), new Book("I Promessi Sposi", "Alessandro Manzoni", "L332", undefined) ]);
@@ -20,15 +22,22 @@ export class RootComponent implements OnInit {
   bf_count: number = 0;
   bf_message: string = "";
   
-  constructor() { }
+  constructor(private ls: LibraryService) { }
 
   ngOnInit() {
   }
+  pushBook(library:Library, book: Book){
+    library.addBook(book);
+  }
+
+  update(newLibrary: Library){
+    this.library = newLibrary;
+  }
 
   newbook(newbook: Book){
-    this.library.addBook(newbook);
-    console.log(this.library.books)
+    this.ls.getSub(this.update);
   }
+  
   removebook(book: Book){
     if(confirm("Are you sure to delete " + book.titolo)) {
      this.library.deleteBook(book);
@@ -63,6 +72,9 @@ export class RootComponent implements OnInit {
       this.bf_message = "Nessun libro trovato";
     }
   }
-
+  
 }
+
+
+
 
