@@ -44,11 +44,19 @@ export class RootComponent implements OnInit {
   
   removebook(book: Book){
     if(confirm("Are you sure to delete " + book.titolo)) {
-     this.library.deleteBook(book);
-     var div2del: HTMLDivElement = document.getElementById(book.posizione) as HTMLDivElement;
-     this.bf_count += -1;
-     this.msgFound(this.bf_count);
-     div2del.remove();
+      this.ls.getLibrary().subscribe({
+      next: (x: AjaxResponse<any>) => {
+        this.library.books = JSON.parse(x.response);
+        this.library.deleteBook(book);
+        this.ls.setSub(this.library.books);
+        var div2del: HTMLDivElement = document.getElementById(book.posizione) as HTMLDivElement;
+        this.bf_count += -1;
+        this.msgFound(this.bf_count);
+        div2del.remove();
+    },
+    error: (err) =>
+      console.error('La richiesta ha dato un errore: ' + JSON.stringify(err)),
+    });
     }
   }
 
@@ -68,7 +76,7 @@ export class RootComponent implements OnInit {
         console.error('La richiesta ha dato un errore: ' + JSON.stringify(err)),
       });
     }
-  
+    
   msgFound(count:number){
     if(count>1){
       this.bf_message = count + " libri trovati";

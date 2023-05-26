@@ -37,8 +37,7 @@ export class Library {
     this.books.push(book);
   }
   deleteBook(book: Book){
-    var indice:number = this.books.indexOf(book);
-    this.books.splice(indice, 1);
+    this.books = this.books.filter((element) => element.posizione != book.posizione);
   }
 }
 
