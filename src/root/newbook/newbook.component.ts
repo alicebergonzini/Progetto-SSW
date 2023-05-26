@@ -36,6 +36,7 @@ export class NewbookComponent implements OnInit {
     var author: HTMLInputElement = document.getElementById('nbautore') as HTMLInputElement;
     var position: HTMLInputElement = document.getElementById('nbposizione') as HTMLInputElement;
     if(title.value == "" || author.value == "" || position.value == ""){
+      this.isAdded=false;
       this.errorMsg = "Errore: Compila tutti i campi";
       return;
     }
