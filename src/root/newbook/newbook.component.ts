@@ -21,7 +21,8 @@ export class NewbookComponent implements OnInit {
   //metodo che in base al parametro bookForm, mostra o nasconde il form
   showForm() {
     this.isAdded=false;
-    if (this.bookForm == false) {
+    this.errorMsg = "";
+    if (!this.bookForm) {
       this.bookForm = true;
       this.addbooktext = '- Nascondi';
     } else {

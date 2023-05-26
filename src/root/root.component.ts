@@ -46,7 +46,7 @@ export class RootComponent implements OnInit {
     
   
   removebook(book: Book){
-    if(confirm("Are you sure to delete " + book.titolo)) {
+    if(confirm("Sei sicuro di voler eliminare '" + book.titolo + "' dalla tua libreria?")) {
       this.ls.getLibrary().subscribe({
       next: (x: AjaxResponse<any>) => {
         this.library.books = JSON.parse(x.response);
