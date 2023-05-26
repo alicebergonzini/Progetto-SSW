@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Book } from '../classes';
@@ -15,10 +15,12 @@ export class NewbookComponent implements OnInit {
   bookForm: boolean = false;
   addbooktext: string = '+ Aggiungi un libro';
   errorMsg: string = "";
+  @Input() isAdded:boolean = false;
   constructor() {}
   ngOnInit() {}
   //metodo che in base al parametro bookForm, mostra o nasconde il form
   showForm() {
+    this.isAdded=false;
     if (this.bookForm == false) {
       this.bookForm = true;
       this.addbooktext = '- Nascondi';

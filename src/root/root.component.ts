@@ -22,6 +22,7 @@ export class RootComponent implements OnInit {
   booksfound: Array<Book> = [];
   bf_count: number = 0;
   bf_message: string = "";
+  isAdded: boolean = false;
   
   constructor(private ls: LibraryService) { }
 
@@ -30,11 +31,13 @@ export class RootComponent implements OnInit {
 
     //metodo che fa la subscribe di get e chiama una callback sul dato ottenuto
   newbook(book: Book){
+    this.isAdded = false;
     this.ls.getLibrary().subscribe({
       next: (x: AjaxResponse<any>) => {
       this.library.books = JSON.parse(x.response);
       this.library.addBook(book);
       this.ls.setSub(this.library.books);
+      this.isAdded = true;
       },
       error: (err) =>
         console.error('La richiesta ha dato un errore: ' + JSON.stringify(err)),

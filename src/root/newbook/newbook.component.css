@@ -78,5 +78,18 @@ a:hover {
   color: red;
 }
 
+#success {
+  background-color: #bfe099;
+  text-align: center;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: rgb(147, 190, 98);
+  margin-bottom: 15px;
+  padding: 5px;
+  font-size: 10px;
+  color: rgb(96, 145, 41);
+}
 
-
+#icona{
+  color: rgb(96, 145, 41);
+}  
