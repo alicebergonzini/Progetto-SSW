@@ -39,6 +39,17 @@ export class Library {
   deleteBook(book: Book){
     this.books = this.books.filter((element) => element.posizione != book.posizione);
   }
+  adapt(booklist: Book[]){
+    this.books = booklist.map((el: Book) => new Book(el.titolo, el.autore, el.posizione, el.utenteNol))
+  }
+  loanBook(book:Book, user:User){
+    this.books.map((element)=>{
+      if(element.posizione == book.posizione){
+        console.log(element);
+        element.loan(user);
+    }
+  });
+}
 }
 
 //classe per l'utente 

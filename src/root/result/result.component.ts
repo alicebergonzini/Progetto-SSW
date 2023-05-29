@@ -49,17 +49,24 @@ export class ResultComponent implements OnInit {
   makeNoleggio(user: User){
     this.ls.getLibrary().subscribe({
       next: (x: AjaxResponse<any>) => {
-      this.library.books = JSON.parse(x.response);
+      var booklist = JSON.parse(x.response);
+      this.library.adapt(booklist);
+      this.library.loanBook(this.book_result, user);
+      this.book_result.loan(user);
+      /*
       this.library.books.map((element)=>{
         if(element.posizione == this.book_result.posizione){
-          element.utenteNol = user;
-          //voglio farlo con la loan!!!
+          console.log(element);
+          element.loan(user);
         }
-      });
+      this.checkStatus();
+      ); */
+      //this.book_result.loan(user);
+      console.log(this.book_result);
       this.ls.setLibrary(this.library.books).subscribe({
         next: (x: AjaxResponse<any>) => {
-          this.checkStatus();
           this.chiudiNoleggia();
+          this.checkStatus();
           console.log(this.status);
         },
         error: (err) => console.error('Errore: ' + JSON.stringify(err)),
@@ -69,7 +76,6 @@ export class ResultComponent implements OnInit {
       error: (err) =>
         console.error('La richiesta ha dato un errore: ' + JSON.stringify(err)),
       });
-      
   }
   returnBook(){
     if(confirm("Sicuro di voler restituire " + this.book_result.titolo + "?")){

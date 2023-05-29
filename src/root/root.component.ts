@@ -34,7 +34,8 @@ export class RootComponent implements OnInit {
     this.isAdded = false;
     this.ls.getLibrary().subscribe({
       next: (x: AjaxResponse<any>) => {
-      this.library.books = JSON.parse(x.response);
+      var booklist = JSON.parse(x.response);
+      this.library.adapt(booklist);
       this.library.addBook(book);
       this.ls.setSub(this.library.books);
       this.isAdded = true;
@@ -49,7 +50,8 @@ export class RootComponent implements OnInit {
     if(confirm("Sei sicuro di voler eliminare '" + book.titolo + "' dalla tua libreria?")) {
       this.ls.getLibrary().subscribe({
       next: (x: AjaxResponse<any>) => {
-        this.library.books = JSON.parse(x.response);
+        var booklist = JSON.parse(x.response);
+        this.library.adapt(booklist);
         this.library.deleteBook(book);
         this.ls.setSub(this.library.books);
         var div2del: HTMLDivElement = document.getElementById(book.posizione) as HTMLDivElement;
@@ -67,7 +69,8 @@ export class RootComponent implements OnInit {
     this.ls.getLibrary().subscribe({
       next: (x: AjaxResponse<any>) => {
         this.booksfound = [];
-        this.library.books = JSON.parse(x.response);
+        var booklist = JSON.parse(x.response);
+        this.library.adapt(booklist);
         if(searchedstring!=""){
           this.booksfound = this.library.books.filter((book) => (book.titolo.toLowerCase()+book.autore.toLocaleLowerCase()).includes(searchedstring.toLocaleLowerCase())); 
           this.bf_count = this.booksfound.length;
