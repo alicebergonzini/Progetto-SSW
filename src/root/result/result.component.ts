@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core'; 
-import {Book, User} from '../classes';
+import { Library, Book, User} from '../classes';
+import { LibraryService } from '../library.service';
 import { NoleggioComponent } from '../noleggio/noleggio.component';
+import { ajax, AjaxResponse } from 'rxjs/ajax';
 
 
 @Component({
@@ -9,18 +11,20 @@ import { NoleggioComponent } from '../noleggio/noleggio.component';
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.css'],
   standalone: true,
-  imports: [CommonModule, NoleggioComponent]
+  imports: [CommonModule, NoleggioComponent],
+  providers: [LibraryService]
 })
 export class ResultComponent implements OnInit {
   //inizializzo perché mi obbliga a farlo; è corretto? 
   @Input() book_result: Book = new Book("", "", "", undefined);
   @Input() id: string = "";
+  @Input() library: Library = new Library([]);
   @Output() deleteEvent = new EventEmitter<Book>(); 
   status: string = ""; 
   isDisponibile: boolean = true;
   noleggiando: boolean = false;
   
-  constructor() { }
+  constructor(private ls: LibraryService) { }
 
   ngOnInit() {
     this.checkStatus();
@@ -43,9 +47,29 @@ export class ResultComponent implements OnInit {
     div_result.style.height = "110px";
   }
   makeNoleggio(user: User){
-    this.book_result.loan(user);
-    this.chiudiNoleggia();
-    this.checkStatus();
+    this.ls.getLibrary().subscribe({
+      next: (x: AjaxResponse<any>) => {
+      this.library.books = JSON.parse(x.response);
+      this.library.books.map((element)=>{
+        if(element.posizione == this.book_result.posizione){
+          element.utenteNol = user;
+          //voglio farlo con la loan!!!
+        }
+      });
+      this.ls.setLibrary(this.library.books).subscribe({
+        next: (x: AjaxResponse<any>) => {
+          this.checkStatus();
+          this.chiudiNoleggia();
+          console.log(this.status);
+        },
+        error: (err) => console.error('Errore: ' + JSON.stringify(err)),
+        });
+      
+      },
+      error: (err) =>
+        console.error('La richiesta ha dato un errore: ' + JSON.stringify(err)),
+      });
+      
   }
   returnBook(){
     if(confirm("Sicuro di voler restituire " + this.book_result.titolo + "?")){
