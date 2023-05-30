@@ -9,7 +9,8 @@
     </div>
     <div class="elements action">
       <div class="status">Status: {{ status }}</div>
-      <br />
+      <div class="borrower" *ngIf="book_result.utenteNol!=undefined">da <span class="b_name">{{book_result.utenteNol.nome }} {{book_result.utenteNol.cognome }}</span></div>
+      <br *ngIf="isDisponibile">
       <div class="buttons">
         <button *ngIf="isDisponibile && !noleggiando"  class="btn_group borrow" title="Noleggia" (click)="openNoleggia()"> 
           <span class="material-symbols-outlined"> approval_delegation </span>

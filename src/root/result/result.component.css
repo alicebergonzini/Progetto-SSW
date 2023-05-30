@@ -49,6 +49,15 @@
   font-size: 13px;
 }
 
+.borrower {
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+.b_name {
+  color: #8ea870;
+}
+
 .btn_group {
   margin-top: 10px;
   text-align: center;
@@ -78,6 +87,8 @@
   background-color: #49bcff;
 }
 
+
+
 .borrow {
   background-color: #afcc8d;
 }
@@ -93,3 +104,4 @@
 .sections {
   display: flex;
 }
+

@@ -45,11 +45,17 @@ export class Library {
   loanBook(book:Book, user:User){
     this.books.map((element)=>{
       if(element.posizione == book.posizione){
-        console.log(element);
         element.loan(user);
-    }
-  });
-}
+      }
+    });
+  }
+  returnBook(book: Book){
+    this.books.map((element)=>{
+      if(element.posizione == book.posizione){
+        element.ret();
+      }
+    })
+  }
 }
 
 //classe per l'utente 
