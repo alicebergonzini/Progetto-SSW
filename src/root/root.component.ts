@@ -29,7 +29,6 @@ export class RootComponent implements OnInit {
   ngOnInit() {
   }
 
-    //metodo che fa la subscribe di get e chiama una callback sul dato ottenuto
   newbook(book: Book){
     this.isAdded = false;
     this.ls.getLibrary().subscribe({

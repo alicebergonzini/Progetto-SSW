@@ -15,7 +15,6 @@ import { ajax, AjaxResponse } from 'rxjs/ajax';
   providers: [LibraryService]
 })
 export class ResultComponent implements OnInit {
-  //inizializzo perché mi obbliga a farlo; è corretto? 
   @Input() book_result: Book = new Book("", "", "", undefined);
   @Input() id: string = "";
   @Input() library: Library = new Library([]);
