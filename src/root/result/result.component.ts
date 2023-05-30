@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core'; 
-import {Book, User} from '../classes';
+import { Library, Book, User} from '../classes';
+import { LibraryService } from '../library.service';
 import { NoleggioComponent } from '../noleggio/noleggio.component';
+import { ajax, AjaxResponse } from 'rxjs/ajax';
 
 
 @Component({
@@ -9,18 +11,19 @@ import { NoleggioComponent } from '../noleggio/noleggio.component';
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.css'],
   standalone: true,
-  imports: [CommonModule, NoleggioComponent]
+  imports: [CommonModule, NoleggioComponent],
+  providers: [LibraryService]
 })
 export class ResultComponent implements OnInit {
-  //inizializzo perché mi obbliga a farlo; è corretto? 
   @Input() book_result: Book = new Book("", "", "", undefined);
   @Input() id: string = "";
+  @Input() library: Library = new Library([]);
   @Output() deleteEvent = new EventEmitter<Book>(); 
-  status: string = ""; 
+  status: string = "";
   isDisponibile: boolean = true;
   noleggiando: boolean = false;
   
-  constructor() { }
+  constructor(private ls: LibraryService) { }
 
   ngOnInit() {
     this.checkStatus();
@@ -43,14 +46,34 @@ export class ResultComponent implements OnInit {
     div_result.style.height = "110px";
   }
   makeNoleggio(user: User){
-    this.book_result.loan(user);
-    this.chiudiNoleggia();
-    this.checkStatus();
+    this.ls.getLibrary().subscribe({
+      next: (x: AjaxResponse<any>) => {
+      var booklist = JSON.parse(x.response);
+      this.library.adapt(booklist);
+      this.library.loanBook(this.book_result, user);
+      this.book_result.loan(user);
+      this.chiudiNoleggia();
+      this.checkStatus();
+      this.ls.setSub(this.library.books);
+      },
+      error: (err) =>
+        console.error('La richiesta ha dato un errore: ' + JSON.stringify(err)),
+      });
   }
   returnBook(){
     if(confirm("Sicuro di voler restituire " + this.book_result.titolo + "?")){
-      this.book_result.ret();
-      this.checkStatus();
+      this.ls.getLibrary().subscribe({
+        next: (x: AjaxResponse<any>) => {
+          var booklist = JSON.parse(x.response);
+          this.library.adapt(booklist);
+          this.library.returnBook(this.book_result);
+          this.book_result.ret();
+          this.checkStatus();
+          this.ls.setSub(this.library.books);
+          },
+          error: (err) =>
+          console.error('La richiesta ha dato un errore: ' + JSON.stringify(err)),
+          });
+        }
     }
-  }
 }

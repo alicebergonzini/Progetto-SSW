@@ -9,7 +9,8 @@
     </div>
     <div class="elements action">
       <div class="status">Status: {{ status }}</div>
-      <br />
+      <div class="borrower" *ngIf="book_result.utenteNol!=undefined">da <span class="b_name">{{book_result.utenteNol.nome }} {{book_result.utenteNol.cognome }}</span></div>
+      <br *ngIf="isDisponibile">
       <div class="buttons">
         <button *ngIf="isDisponibile && !noleggiando"  class="btn_group borrow" title="Noleggia" (click)="openNoleggia()"> 
           <span class="material-symbols-outlined"> approval_delegation </span>
@@ -20,7 +21,6 @@
         <button *ngIf="!isDisponibile" class="btn_group return" title="Restituisci" (click)="returnBook()">
           <span class="material-symbols-outlined"> drive_file_move </span>
         </button>
-
         <button class="btn_group delete" *ngIf="isDisponibile" title="Elimina" (click)="onDelete()">
           <span class="material-symbols-outlined"> delete </span>
         </button>

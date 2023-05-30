@@ -1,11 +1,11 @@
 
 <div id="root">
   <app-header></app-header>
-  <app-newbook (newBookEvent)="newbook($event)"></app-newbook>
+  <app-newbook [isAdded] = "isAdded"(newBookEvent)="newbook($event)"></app-newbook>
   <app-research (searchBookEvent)="searchbook($event)"></app-research>
   <div id="results">
     <p> {{bf_message}} </p>
-    <app-result [book_result]="book" *ngFor="let book of booksfound;" (deleteEvent)="removebook($event)" [id]="book.posizione"></app-result>
+    <app-result [book_result]="book" *ngFor="let book of booksfound;" (deleteEvent)="removebook($event)" [id]="book.posizione" [library]="this.library"></app-result>
   </div>
 </div>
 

@@ -37,8 +37,24 @@ export class Library {
     this.books.push(book);
   }
   deleteBook(book: Book){
-    var indice:number = this.books.indexOf(book);
-    this.books.splice(indice, 1);
+    this.books = this.books.filter((element) => element.posizione != book.posizione);
+  }
+  adapt(booklist: Book[]){
+    this.books = booklist.map((el: Book) => new Book(el.titolo, el.autore, el.posizione, el.utenteNol))
+  }
+  loanBook(book:Book, user:User){
+    this.books.map((element)=>{
+      if(element.posizione == book.posizione){
+        element.loan(user);
+      }
+    });
+  }
+  returnBook(book: Book){
+    this.books.map((element)=>{
+      if(element.posizione == book.posizione){
+        element.ret();
+      }
+    })
   }
 }
 

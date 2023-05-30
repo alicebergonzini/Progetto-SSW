@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
-import { Library } from './classes';
+import { Library, Book } from './classes';
 
 @Injectable()
 export class LibraryService {
-  apiKey: string = '6590f59c';
+  apiKey: string = '5e5aa10f';
   URL: string =
     'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint/';
   constructor() {}
@@ -17,13 +17,24 @@ export class LibraryService {
       crossDomain: true,
     });
   }
-  //metodo che immette il dato nel server
-  setLibrary(library: Library): Observable<AjaxResponse<any>> {
-    return ajax({
-      method: 'POST',
-      url: this.URL + 'set?key=' + this.apiKey,
-      crossDomain: true,
-      body: JSON.stringify(library),
-    });
+  //metodo che chiama una callback sul dato e lo immette nel server
+  setLibrary(library: Array<Book>): Observable<AjaxResponse<any>> {
+  return ajax({
+    method: 'POST',
+    url: this.URL + 'set?key=' + this.apiKey,
+    crossDomain: true,
+    body: JSON.stringify(library),
+  });
   }
+
+  //metodo che fa la subscribe di set 
+  setSub(library: Array<Book>){
+  this.setLibrary(library).subscribe({
+    next: (x: AjaxResponse<any>) => {},
+    error: (err) => console.error('Errore: ' + JSON.stringify(err)),
+    });
+    }
+  
+
 }
+  

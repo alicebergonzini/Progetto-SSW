@@ -78,5 +78,35 @@ a:hover {
   color: red;
 }
 
+#success {
+  position: relative;
+  background-color: #d8f6b5;
+  text-align: center;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: rgb(147, 190, 98);
+  margin-bottom: 15px;
+  padding: 5px;
+  font-size: 10px;
+  color: rgb(96, 145, 41);
+}
 
+#icona{
+  color: rgb(96, 145, 41);
+}  
 
+.close{
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  padding: 2px;
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+
+}
+
+.close span {
+  color: rgb(96, 145, 41);
+  font-size: 14px;
+}
