@@ -13,7 +13,7 @@ import { LibraryService } from '../library.service';
   providers: [LibraryService]
 })
 export class NewbookComponent implements OnInit {
-  @Input() isAdded:boolean = false;
+  @Input() isAdded:boolean = true;
   @Output() newBookEvent = new EventEmitter<Book>(); 
   bookForm: boolean = false;
   addbooktext: string = '+ Aggiungi un libro';
@@ -54,6 +54,7 @@ export class NewbookComponent implements OnInit {
         var booklist = JSON.parse(x.response);
         var library = new Library([]);
         library.adapt(booklist);
+        //controllo che all'interno della libreria non ci sia già un libro a quella posizione
         if (library.books.some((el) => el.posizione == position.value)){
           this.errorMsg = "Questa posizione è già occupata da un altro libro";
         } else {
@@ -68,12 +69,10 @@ export class NewbookComponent implements OnInit {
     error: (err) =>
       console.error('La richiesta ha dato un errore: ' + JSON.stringify(err)),
     })
-
-    //controllo che all'interno della libreria non ci sia già un libro a quella posizione
-   
-    
   }
-   
+  chiudiSuccess(){
+    this.isAdded=false;
+  }
 }
 
 
