@@ -1,7 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import {Book} from '../classes'
-import { CommonModule } from '@angular/common';
-import { AjaxResponse } from 'rxjs/ajax';
 
 @Component({
   selector: 'app-research',

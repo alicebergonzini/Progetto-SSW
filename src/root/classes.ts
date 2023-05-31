@@ -1,7 +1,3 @@
-import { Interfaces } from './interfaces';
-
-//possibilmente definire un tipo di stringa che matchi una data espressione regolare
-
 //classe per una singola unità della Libreria, un libro
 export class Book {
   titolo: string;

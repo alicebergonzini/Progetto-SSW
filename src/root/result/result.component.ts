@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Library, Book, User } from '../classes';
 import { LibraryService } from '../library.service';
 import { NoleggioComponent } from '../noleggio/noleggio.component';
-import { ajax, AjaxResponse } from 'rxjs/ajax';
+import { AjaxResponse } from 'rxjs/ajax';
 
 @Component({
   selector: 'app-result',

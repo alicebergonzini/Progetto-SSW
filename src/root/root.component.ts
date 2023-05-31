@@ -4,7 +4,7 @@ import { HeaderComponent } from './header/header.component'
 import { AjaxResponse } from 'rxjs/ajax';
 import {ResearchComponent} from './research/research.component'
 import { NewbookComponent } from './newbook/newbook.component';
-import {Library, Book, User} from './classes';
+import {Library, Book} from './classes';
 import { ResultComponent } from './result/result.component';
 import { LibraryService } from './library.service';
 

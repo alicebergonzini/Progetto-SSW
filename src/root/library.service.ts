@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
-import { Library, Book } from './classes';
+import { Book } from './classes';
 
 @Injectable()
 export class LibraryService {
