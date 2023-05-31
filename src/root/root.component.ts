@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component'
-import { ajax, AjaxResponse } from 'rxjs/ajax';
+import { AjaxResponse } from 'rxjs/ajax';
 import {ResearchComponent} from './research/research.component'
 import { NewbookComponent } from './newbook/newbook.component';
 import {Library, Book, User} from './classes';

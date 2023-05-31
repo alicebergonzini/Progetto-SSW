@@ -40,7 +40,7 @@ export class Library {
     this.books = this.books.filter((element) => element.posizione != book.posizione);
   }
   adapt(booklist: Book[]){
-    this.books = booklist.map((el: Book) => new Book(el.titolo, el.autore, el.posizione, el.utenteNol))
+    this.books = booklist.map((el) => new Book(el.titolo, el.autore, el.posizione, el.utenteNol))
   }
   loanBook(book:Book, user:User){
     this.books.map((element)=>{

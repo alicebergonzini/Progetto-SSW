@@ -28,23 +28,28 @@ export class ResultComponent implements OnInit {
   ngOnInit() {
     this.checkStatus();
   }
+  //metodo che definisce due proprietà in base alla disponibilità del libro
   checkStatus(){
     this.status =  this.book_result.utenteNol === undefined ? "Disponibile" : "Noleggiato";
     this.isDisponibile =  this.book_result.utenteNol != undefined ? false: true;
   }
+  //metodo che emette l'istanza di libro al componente genitore(result) al click del pulsante Elimina
   onDelete(){
     this.deleteEvent.emit(this.book_result);
   }
+  //metodo che aggiorna lo status di 'noleggiando' per mostrare la sezione con gli input per il noleggio
   openNoleggia(){
     this.noleggiando = true;
     var div_result: HTMLDivElement = document.getElementById(this.id) as HTMLDivElement; 
     div_result.style.height = "210px";
   }
+  //metodo che aggiorna lo status di 'noleggiando' per chiudere la sezione per il noleggio
   chiudiNoleggia(){
     this.noleggiando = false;
     var div_result: HTMLDivElement = document.getElementById(this.id) as HTMLDivElement; 
     div_result.style.height = "110px";
   }
+  //metodo ce fa una get per trovare il libro selezionato e poi fa una set con il libro noleggiato all'utente
   makeNoleggio(user: User){
     this.ls.getLibrary().subscribe({
       next: (x: AjaxResponse<any>) => {

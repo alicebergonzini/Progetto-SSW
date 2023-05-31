@@ -14,6 +14,7 @@ export class ResearchComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+  //metodo che emette al componente genitore (root) la stringa immessa nel campo di ricerca
   cercaSubmit() {
     var cerca: HTMLInputElement = document.getElementById('cerca') as HTMLInputElement;
     var searchstring: string = cerca.value;

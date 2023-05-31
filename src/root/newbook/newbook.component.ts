@@ -18,7 +18,9 @@ export class NewbookComponent implements OnInit {
   bookForm: boolean = false;
   addbooktext: string = '+ Aggiungi un libro';
   errorMsg: string = "";
+  
   constructor(private ls: LibraryService ) {}
+
   ngOnInit() {}
   //metodo che in base al parametro bookForm, mostra o nasconde il form
   showForm() {
@@ -32,9 +34,9 @@ export class NewbookComponent implements OnInit {
       this.addbooktext = '+ Aggiungi un libro';
     }
   }
-  //metodo che viene invocato quando il form viene "inviato";
+  //metodo che viene invocato al click del bottone "Invia";
   onSubmit()  {
-    var formato: RegExp = /^[A-Z]\d{3}$/; //regex che matcha i 
+    var formato: RegExp = /^[A-Z]\d{3}$/; //regex che matcha stringhe con prima lettera maiuscola e tre numeri a seguire
     var title: HTMLInputElement = document.getElementById('nbtitolo') as HTMLInputElement;
     var author: HTMLInputElement = document.getElementById('nbautore') as HTMLInputElement;
     var position: HTMLInputElement = document.getElementById('nbposizione') as HTMLInputElement;
@@ -49,6 +51,7 @@ export class NewbookComponent implements OnInit {
       this.errorMsg = "Posizione dev'essere una lettera maiuscola seguita da tre numeri! e.g: A261";
       return;
     }
+    //viene fatta una get per ottenere l'archivio aggiornato
     this.ls.getLibrary().subscribe({
       next: (x: AjaxResponse<any>) => {
         var booklist = JSON.parse(x.response);
@@ -70,6 +73,7 @@ export class NewbookComponent implements OnInit {
       console.error('La richiesta ha dato un errore: ' + JSON.stringify(err)),
     })
   }
+  //metodo che chiude il messaggio di avvenuta aggiunta, invocato al click della x 
   chiudiSuccess(){
     this.isAdded=false;
   }

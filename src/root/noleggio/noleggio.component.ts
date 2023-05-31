@@ -16,6 +16,7 @@ export class NoleggioComponent implements OnInit {
 
   ngOnInit() {
   }
+  //metodo che emette al componente padre (result) l'utente prestatario
   noleggia(){
     var name: HTMLInputElement = document.getElementById(this.inputnome) as HTMLInputElement;
     var surname: HTMLInputElement = document.getElementById(this.inputcognome) as HTMLInputElement;
