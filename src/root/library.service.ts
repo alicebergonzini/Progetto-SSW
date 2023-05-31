@@ -17,7 +17,7 @@ export class LibraryService {
       crossDomain: true,
     });
   }
-  //metodo che chiama una callback sul dato e lo immette nel server
+  //metodo che immette il dato nel server
   setLibrary(library: Array<Book>): Observable<AjaxResponse<any>> {
   return ajax({
     method: 'POST',
@@ -27,7 +27,7 @@ export class LibraryService {
   });
   }
 
-  //metodo che fa la subscribe di set 
+  //metodo che fa la subscribe di setLibrary
   setSub(library: Array<Book>){
   this.setLibrary(library).subscribe({
     next: (x: AjaxResponse<any>) => {},

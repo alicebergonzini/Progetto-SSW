@@ -28,7 +28,7 @@ export class RootComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  //metodo che dentro la sub di get fa la set passandogli la libreria aggiornata con il nuovo libro
   newbook(book: Book){
     this.isAdded = false;
     this.ls.getLibrary().subscribe({
@@ -43,8 +43,7 @@ export class RootComponent implements OnInit {
         console.error('La richiesta ha dato un errore: ' + JSON.stringify(err)),
       });
     }
-    
-  
+  //metodo che dentro la sub di get, elimina il libro passatogli come argomento dalla libreria e poi fa la set
   removebook(book: Book){
     if(confirm("Sei sicuro di voler eliminare '" + book.titolo + "' dalla tua libreria?")) {
       this.ls.getLibrary().subscribe({
@@ -63,7 +62,7 @@ export class RootComponent implements OnInit {
     });
     }
   }
-
+  //metodo che dentro la sub di get itera sui libri e ricava la lista di libri che matchano la stringa messa nell'input di cerca
   searchbook(searchedstring: string){
     this.ls.getLibrary().subscribe({
       next: (x: AjaxResponse<any>) => {
@@ -81,7 +80,7 @@ export class RootComponent implements OnInit {
         console.error('La richiesta ha dato un errore: ' + JSON.stringify(err)),
       });
     }
-    
+  //metodo che restituisce un messaggio in base al numero di libri trovati
   msgFound(count:number){
     if(count>1){
       this.bf_message = count + " libri trovati";
