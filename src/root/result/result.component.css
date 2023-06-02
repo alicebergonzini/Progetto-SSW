@@ -87,8 +87,6 @@
   background-color: #49bcff;
 }
 
-
-
 .borrow {
   background-color: #afcc8d;
 }
@@ -97,8 +95,25 @@
   background-color: #95be65;
 }
 
+
 .material-symbols-outlined {
   font-size: 20px;
+}
+
+.close{
+ position: relative;
+ top: 1.5px;
+ right: 0.5px;
+}
+
+.bin {
+  position:relative;
+  top: 1px;
+}
+
+.dir {
+  position: relative;
+  top: 2px;
 }
 
 .sections {

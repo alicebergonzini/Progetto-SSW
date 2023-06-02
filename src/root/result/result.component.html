@@ -16,13 +16,13 @@
           <span class="material-symbols-outlined"> approval_delegation </span>
         </button>
         <button *ngIf="noleggiando"  class="btn_group borrow" title="Chiudi" (click)="chiudiNoleggia()"> 
-          <span class="material-symbols-outlined"> close </span>
+          <span class="material-symbols-outlined close"> close </span>
         </button>
         <button *ngIf="!isDisponibile" class="btn_group return" title="Restituisci" (click)="returnBook()">
-          <span class="material-symbols-outlined"> drive_file_move </span>
+          <span class="material-symbols-outlined dir"> drive_file_move </span>
         </button>
         <button class="btn_group delete" *ngIf="isDisponibile" title="Elimina" (click)="onDelete()">
-          <span class="material-symbols-outlined"> delete </span>
+          <span class="material-symbols-outlined bin"> delete </span>
         </button>
       </div>
     </div>
