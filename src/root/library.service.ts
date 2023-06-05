@@ -8,7 +8,6 @@ export class LibraryService {
   apiKey: string = '5e5aa10f';
   URL: string =
     'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint/';
-  constructor() {}
   //metodo che richiede il dato al server
   getLibrary(): Observable<AjaxResponse<any>> {
     return ajax({
@@ -26,7 +25,6 @@ export class LibraryService {
     body: JSON.stringify(library),
   });
   }
-
   //metodo che fa la subscribe di setLibrary
   setSub(library: Array<Book>){
   this.setLibrary(library).subscribe({

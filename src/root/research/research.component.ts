@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-research',
@@ -6,11 +6,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./research.component.css'],
   standalone: true
 })
-export class ResearchComponent implements OnInit {
+export class ResearchComponent {
   @Output() searchBookEvent = new EventEmitter<string>(); 
-  constructor() {}
-
-  ngOnInit() {}
   //metodo che emette al componente genitore (root) la stringa immessa nel campo di ricerca
   cercaSubmit() {
     var cerca: HTMLInputElement = document.getElementById('cerca') as HTMLInputElement;

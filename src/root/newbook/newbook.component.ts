@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AjaxResponse } from 'rxjs/ajax';
 import { Book, Library } from '../classes';
@@ -12,7 +12,7 @@ import { LibraryService } from '../library.service';
   standalone: true,
   providers: [LibraryService]
 })
-export class NewbookComponent implements OnInit {
+export class NewbookComponent  {
   @Input() isAdded:boolean = true;
   @Output() newBookEvent = new EventEmitter<Book>(); 
   bookForm: boolean = false;
@@ -21,7 +21,6 @@ export class NewbookComponent implements OnInit {
   
   constructor(private ls: LibraryService ) {}
 
-  ngOnInit() {}
   //metodo che in base al parametro bookForm, mostra o nasconde il form
   showForm() {
     this.isAdded=false;

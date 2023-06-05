@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component'
 import { AjaxResponse } from 'rxjs/ajax';
@@ -17,7 +17,7 @@ import { LibraryService } from './library.service';
   standalone: true,
   providers: [LibraryService],
 })
-export class RootComponent implements OnInit {
+export class RootComponent {
   library: Library = new Library([]);
   booksfound: Array<Book> = [];
   bf_count: number = 0;
@@ -26,8 +26,6 @@ export class RootComponent implements OnInit {
   
   constructor(private ls: LibraryService) { }
 
-  ngOnInit() {
-  }
   //metodo che dentro la sub di get fa la set passandogli la libreria aggiornata con il nuovo libro
   newbook(book: Book){
     this.isAdded = false;
@@ -89,8 +87,7 @@ export class RootComponent implements OnInit {
     } else if(count==0){
       this.bf_message = "Nessun libro trovato";
     }
-  }
-  
+  } 
 }
 
 

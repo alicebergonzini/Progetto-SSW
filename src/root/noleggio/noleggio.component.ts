@@ -1,4 +1,4 @@
-import { Component,Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import {Book, User} from '../classes'
 
 @Component({
@@ -7,15 +7,11 @@ import {Book, User} from '../classes'
   styleUrls: ['./noleggio.component.css'],
   standalone: true
 })
-export class NoleggioComponent implements OnInit {
+export class NoleggioComponent  {
   @Input() book: Book = new Book("", "", "", undefined);
   @Output() noleggiaEvent = new EventEmitter<User>(); 
   inputnome: string = this.book.posizione + "Nome"
   inputcognome: string = this.book.posizione + "Cognome"
-  constructor() { }
-
-  ngOnInit() {
-  }
   //metodo che emette al componente padre (result) l'utente prestatario
   noleggia(){
     var name: HTMLInputElement = document.getElementById(this.inputnome) as HTMLInputElement;
