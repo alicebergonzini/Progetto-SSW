@@ -2,10 +2,6 @@
   margin-bottom: 30px;
 }
 
-.container {
-  font-family: 'Inter';
-}
-
 a:hover {
   text-decoration: underline;
   cursor: pointer;
@@ -19,7 +15,7 @@ a:hover {
 
 
 .form {
-  padding-bottom: 40px;
+  padding-bottom: 10px;
 }
 
 .form .field {
